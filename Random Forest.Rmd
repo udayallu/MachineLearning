@@ -1,0 +1,141 @@
+---
+title: "RandomForest"
+author: "Uday Allu"
+date: "2 November 2017"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+Random Forest in R 
+
+```{r}
+treedata=read.csv(file="C:/Users/Administrator/Desktop/weather_data/weather_data_rf.csv",header=TRUE)
+```
+
+
+```{r}
+sample_items=sample.int(n=nrow(treedata),size = floor(.90*nrow(treedata)),replace = F)
+sample_items
+```
+
+```{r}
+treedata_train=treedata[sample_items,]
+treedata_test=treedata[-sample_items,]
+treedata_train
+treedata_test
+```
+
+```{r}
+library(tree)
+tree.model1=tree(Play~.,data=treedata_train)
+tree.model1
+```
+
+Tree Model 2
+
+```{r}
+tree.model2=tree(Play~Temperature+Humidity+Wind,data = treedata_train)
+tree.model2
+```
+```{r}
+summary(tree.model2)
+```
+
+```{r}
+tree.model3=tree(Play~Humidity+Outlook,data = treedata_train)
+tree.model3
+```
+
+We can choose the best models based on the accurancy 
+
+Predicting the model
+
+```{r}
+model_prediction1=predict(tree.model1,treedata_test[1,])
+model_prediction1
+```
+
+```{r}
+model_prediction2=predict(tree.model2,treedata_test[1,])
+model_prediction2
+```
+
+```{r}
+model_prediction3=predict(tree.model3,treedata_test[1,])
+model_prediction3
+```
+
+```{r}
+model_prediction1=predict(tree.model1,treedata_test[2,])
+model_prediction1
+```
+
+```{r}
+model_prediction2=predict(tree.model2,treedata_test[2,])
+model_prediction2
+```
+
+```{r}
+model_prediction3=predict(tree.model3,treedata_test[2,])
+model_prediction3
+```
+
+```{r}
+model_prediction1=predict(tree.model1,treedata_test[3,])
+model_prediction1
+```
+
+```{r}
+model_prediction2=predict(tree.model2,treedata_test[3,])
+model_prediction2
+```
+
+```{r}
+model_prediction3=predict(tree.model3,treedata_test[3,])
+model_prediction3
+```
+
+```{r}
+model_prediction1=predict(tree.model1,treedata_test[4,])
+model_prediction1
+```
+
+```{r}
+model_prediction2=predict(tree.model2,treedata_test[4,])
+model_prediction2
+```
+
+```{r}
+model_prediction3=predict(tree.model3,treedata_test[4,])
+model_prediction3
+```
+
+```{r}
+model_prediction1=predict(tree.model1,treedata_test[5,])
+model_prediction1
+```
+
+```{r}
+model_prediction2=predict(tree.model2,treedata_test[5,])
+model_prediction2
+```
+
+```{r}
+model_prediction3=predict(tree.model3,treedata_test[5,])
+model_prediction3
+```
+
+
+```{r}
+for( i in 1:nrow(treedata_test)){
+model_prediction1=predict(tree.model1,treedata_test[i,])
+print(model_prediction1)
+model_prediction2=predict(tree.model2,treedata_test[i,])
+print(model_prediction2)
+model_prediction3=predict(tree.model3,treedata_test[i,])
+print(model_prediction3)
+readline(prompt = "Press Enter to Continue ")
+}
+```
