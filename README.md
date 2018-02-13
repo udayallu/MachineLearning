@@ -7,4 +7,4 @@ Predicting a Boolean true/false value for an entity with a given set of features
 ### Regression -
 Predicting a real numeric value for an entity with a given set of features.
 ### Clustering -
-Grouping entities with similar features.
+Finding paterns of the similar object. Grouping entities with similar features.
